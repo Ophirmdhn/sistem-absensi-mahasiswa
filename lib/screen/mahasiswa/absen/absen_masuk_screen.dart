@@ -13,8 +13,75 @@ class AbsenMasukScreen extends StatefulWidget {
 class _AbsenMasukScreenState extends State<AbsenMasukScreen> {
   File? _selectedImage;
 
+  Future _openCamera() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.camera);
+
+    if (image == null) return;
+    setState(() {
+      _selectedImage = File(image.path);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    Widget buttonWidget =
+    FilledButton(
+        onPressed: () {
+          _openCamera();
+        },
+        style: FilledButton.styleFrom(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16)
+            )
+        ),
+        child: const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: 4),
+              child: Icon(Icons.camera_alt_outlined),
+            ),
+            SizedBox(width: 8),
+            Text(
+              "Kamera",
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold
+              ),
+            ),
+          ],
+        )
+    );
+
+    if (_selectedImage != null) {
+      buttonWidget =
+          FilledButton(
+              onPressed: () {
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(builder: (context) => const FaceVerificationScreen())
+                // );
+              },
+              style: FilledButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16)
+                  )
+              ),
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Absen",
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold
+                    ),
+                  ),
+                ],
+              )
+          );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Absen Masuk"),
@@ -62,47 +129,12 @@ class _AbsenMasukScreenState extends State<AbsenMasukScreen> {
               child: SizedBox(
                 width: double.infinity,
                 height: 54,
-                child: FilledButton(
-                    onPressed: () {
-                      _openCamera();
-                    },
-                    style: FilledButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16)
-                        )
-                    ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(top: 4),
-                          child: Icon(Icons.camera_alt_outlined),
-                        ),
-                        SizedBox(width: 8),
-                        Text(
-                          "Kamera",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold
-                          ),
-                        ),
-                      ],
-                    )
-                ),
+                child: buttonWidget
               ),
             ),
           ],
         ),
       ),
     );
-  }
-
-  Future _openCamera() async {
-    final image = await ImagePicker().pickImage(source: ImageSource.camera);
-
-    if (image == null) return;
-    setState(() {
-      _selectedImage = File(image.path);
-    });
   }
 }

@@ -1,3 +1,4 @@
+import 'package:absensi_mahasiswa/screen/mahasiswa/history/history_tab_layout.dart';
 import 'package:absensi_mahasiswa/widget/history_card.dart';
 import 'package:flutter/material.dart';
 
@@ -12,18 +13,11 @@ class HistoryScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              HistoryCard(),
-              HistoryCard(),
-              HistoryCard(),
-              HistoryCard(),
-              HistoryCard(),
-              HistoryCard(),
-              HistoryCard(),
-            ],
-          ),
+        child: Column(
+          children: [
+            Text("Anuh"),
+            HistoryTabLayout()
+          ],
         ),
       ),
     );

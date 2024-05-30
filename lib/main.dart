@@ -1,4 +1,5 @@
 import 'package:absensi_mahasiswa/screen/mahasiswa/splash/splash_screen.dart';
+import 'package:absensi_mahasiswa/screen/mahasiswa/history/history_tab_layout.dart';
 import 'package:absensi_mahasiswa/screen/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
