@@ -4,3 +4,4 @@
 
 Anggota Kelompok
 - Tri Wahyu Marjin
+- Fera Feriska Ristania Rahman L.
