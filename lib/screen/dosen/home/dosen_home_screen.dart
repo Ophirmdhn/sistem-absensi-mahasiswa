@@ -1,8 +1,9 @@
+import 'package:absensi_mahasiswa/screen/dosen/home/widget/dosen_absen_card.dart';
+import 'package:absensi_mahasiswa/screen/dosen/home/widget/dosen_bottom_sheet.dart';
 import 'package:absensi_mahasiswa/screen/dosen/home/widget/dosen_home_header.dart';
 import 'package:absensi_mahasiswa/screen/dosen/home/widget/dosen_main_card.dart';
 import 'package:flutter/material.dart';
-
-import '../../mahasiswa/jadwal/schedule_screen.dart';
+import '../jadwal/dosen_schedule_screen.dart';
 
 class DosenHomeScreen extends StatelessWidget {
   const DosenHomeScreen({super.key});
@@ -23,19 +24,19 @@ class DosenHomeScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 8),
                       child: DosenMainCard(),
                     ),
-                    SizedBox(height: 24),
-                    Container(
+                    const SizedBox(height: 24),
+                    SizedBox(
                       width: double.infinity,
                       height: 54,
                       child: FilledButton(
                         onPressed: () {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const ScheduleScreen())
+                              MaterialPageRoute(builder: (context) => const DosenScheduleScreen())
                           );
                         },
                         style: FilledButton.styleFrom(
@@ -50,6 +51,27 @@ class DosenHomeScreen extends StatelessWidget {
                           ),
                         ),
                       ),
+                    ),
+                    const SizedBox(height: 24),
+                    DosenAbsenCard(
+                      title: "Sistem Informasi Manajemen",
+                      time: "10 : 00 - 11 : 45",
+                      clas: "Kelas VI A",
+                      icon: Icons.lock_open,
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (ctx) => const DosenBottomSheet()
+                        );
+                      }
+                    ),
+                    const SizedBox(height: 16),
+                    DosenAbsenCard(
+                      title: "Manajemen Proyek",
+                      time: "13 : 00 - 15 : 30",
+                      clas: "Kelas VI A",
+                      icon: Icons.lock_outline,
+                      onPressed: () {}
                     )
                   ],
                 ),

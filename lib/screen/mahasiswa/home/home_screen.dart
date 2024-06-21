@@ -1,5 +1,4 @@
 import 'package:absensi_mahasiswa/screen/mahasiswa/face_registration/face_registration_screen.dart';
-import 'package:absensi_mahasiswa/screen/mahasiswa/history/history_absen_screen.dart';
 import 'package:absensi_mahasiswa/screen/mahasiswa/history/history_tab_layout.dart';
 import 'package:absensi_mahasiswa/screen/mahasiswa/home/widget/home_header.dart';
 import 'package:absensi_mahasiswa/screen/mahasiswa/home/widget/main_card.dart';
